@@ -37532,7 +37532,7 @@ module.exports = angular;
 },{"./angular":3}],5:[function(require,module,exports){
 'use strict';
 module.exports = function DemoController($scope) {
-    $scope.title = 'Angular Template ';
+    $scope.title = 'Angular Template';
 };
 },{}],6:[function(require,module,exports){
 'use strict';
@@ -37540,6 +37540,23 @@ var app = require('angular').module('app');
 
 app.controller('DemoController', require('./TestController'));
 },{"./TestController":5,"angular":4}],7:[function(require,module,exports){
+'user strict';
+
+module.exports = function demoView() {
+    return {
+        replace: true,
+        templateUrl: 'directives/demo-view.html'
+    }
+};
+},{}],8:[function(require,module,exports){
+'use strict';
+var app = require('angular').module('app');
+
+app.directive('demoView', require('./demoView'));
+},{"./demoView":7,"angular":4}],9:[function(require,module,exports){
+'use strict';
+var app = require('angular').module('app');
+},{"angular":4}],10:[function(require,module,exports){
 'use strict';
 var angular = require('angular');
 var app = angular.module('app', [
@@ -37548,7 +37565,8 @@ var app = angular.module('app', [
 
 require('./controllers');
 require('./services');
-},{"./controllers":6,"./services":8,"angular":4,"angular-ui-bootstrap":1}],8:[function(require,module,exports){
-'use strict';
-var app = require('angular').module('app');
-},{"angular":4}]},{},[7]);
+require('./directives');
+require('./filter');
+},{"./controllers":6,"./directives":8,"./filter":9,"./services":11,"angular":4,"angular-ui-bootstrap":1}],11:[function(require,module,exports){
+arguments[4][9][0].apply(exports,arguments)
+},{"angular":4,"dup":9}]},{},[10]);

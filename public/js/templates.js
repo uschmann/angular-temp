@@ -1,0 +1,1 @@
+angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("directives/demo-view.html","<h2>Hello world!</h2>");}]);

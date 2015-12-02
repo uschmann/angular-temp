@@ -6,3 +6,5 @@ var app = angular.module('app', [
 
 require('./controllers');
 require('./services');
+require('./directives');
+require('./filter');
