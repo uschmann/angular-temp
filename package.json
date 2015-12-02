@@ -1,19 +1,20 @@
 {
-  "name": "angular-app",
+  "name": "angular-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "Template for a new angular app using gulp for building.",
   "main": "gulpfile.js",
   "scripts": {
     "postinstall": "cp -R node_modules/bootstrap public/css"
   },
-  "author": "",
+  "author": "Andre Uschmann",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-minify-html": "^1.0.4",
     "gulp-ng-templates": "0.0.6",
     "gulp-shell": "^0.5.1",
-    "gulp-uglify": "^1.5.1"
+    "gulp-uglify": "^1.5.1",
+    "run-sequence": "^1.1.5"
   },
   "dependencies": {
     "angular": "^1.4.8",

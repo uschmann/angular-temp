@@ -1,4 +1,4 @@
 'use strict';
 var app = require('angular').module('app');
 
-app.controller('DemoController', require('./TestController'));
+app.controller('DemoController', require('./DemoController'));
