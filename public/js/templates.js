@@ -1,1 +1,1 @@
-angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("directives/demo-view.html","<h2>I am a demo directive!</h2>");}]);
+angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("directives/demo-view.html","<h2>{{\'APP_NAME\' | translate}}</h2>");}]);

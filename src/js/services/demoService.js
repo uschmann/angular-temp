@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = function() {
+module.exports = function($translate) {
 
     var service = {};
 
     service.getHeadline = function getHeadline() {
-        return 'Hello foo!';
+        return $translate.instant('APP_NAME');
     };
 
     return service;
