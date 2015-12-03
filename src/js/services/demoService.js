@@ -5,7 +5,7 @@ module.exports = function() {
     var service = {};
 
     service.getHeadline = function getHeadline() {
-        return 'Hello world!';
+        return 'Hello foo!';
     };
 
     return service;

@@ -1,10 +1,13 @@
 var gulp = require('gulp');
-var shell = require('gulp-shell');
 var uglify = require('gulp-uglify');
 var ngTemplates = require('gulp-ng-templates');
 var minifyHtml = require('gulp-minify-html');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
+var browserify = require('gulp-browserify');
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', function() {
 
@@ -20,19 +23,32 @@ gulp.task('make', function() {
 gulp.task('lint', function() {
     gulp.src(['./src/js/main.js', './src/js/**/*.js'])
         .pipe(jshint())
-        // You can look into pretty reporters as well, but that's another story
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-// Package javascript sources
-gulp.task('browserify', shell.task([
-    'browserify src/js/main.js -o public/js/bundle.js'
-]));
+// Browserify task
+gulp.task('browserify', function() {
+    // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
+    gulp.src(['src/js/main.js'])
+        .pipe(browserify({
+            insertGlobals: true,
+            debug: true
+        }))
+        // Bundle to a single file
+        .pipe(concat('bundle.js'))
+        // Output it to our dist folder
+        .pipe(gulp.dest('public/js/'));
+});
 
-// Compile SCSS
-gulp.task('sass', shell.task([
-    'sass src/scss/style.scss public/css/style.css'
-]));
+gulp.task('sass', function() {
+    gulp.src('src/scss/style.scss')
+        // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
+        .pipe(sass({onError: function(e) { console.log(e); } }))
+        // Optionally add autoprefixer
+        .pipe(autoprefixer("last 2 versions", "> 1%", "ie 8"))
+        // These last two should look familiar now :)
+        .pipe(gulp.dest('public/css/'));
+});
 
 // Package and copy views
 gulp.task('view', function() {
