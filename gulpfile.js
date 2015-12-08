@@ -1,19 +1,12 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var ngTemplates = require('gulp-ng-templates');
-var minifyHtml = require('gulp-minify-html');
-var runSequence = require('run-sequence');
-var jshint = require('gulp-jshint');
-var browserify = require('gulp-browserify');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('default', function() {
 
 });
 
 gulp.task('make', function() {
+    var runSequence = require('run-sequence');
+
     runSequence('lint', 'browserify', 'sass', 'view', 'compress', function() {
         console.log('Done');
     });
@@ -21,6 +14,8 @@ gulp.task('make', function() {
 
 // JSHint task
 gulp.task('lint', function() {
+    var jshint = require('gulp-jshint');
+
     gulp.src(['./src/js/main.js', './src/js/**/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
@@ -28,7 +23,9 @@ gulp.task('lint', function() {
 
 // Browserify task
 gulp.task('browserify', function() {
-    // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
+    var browserify = require('gulp-browserify');
+    var concat = require('gulp-concat');
+
     gulp.src(['src/js/main.js'])
         .pipe(browserify({
             insertGlobals: true,
@@ -41,6 +38,9 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('sass', function() {
+    var sass = require('gulp-sass');
+    var autoprefixer = require('gulp-autoprefixer');
+
     gulp.src('src/scss/style.scss')
         // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
         .pipe(sass({onError: function(e) { console.log(e); } }))
@@ -52,6 +52,9 @@ gulp.task('sass', function() {
 
 // Package and copy views
 gulp.task('view', function() {
+    var ngTemplates = require('gulp-ng-templates');
+    var minifyHtml = require('gulp-minify-html');
+
     gulp.src('./src/views/index.html')
         .pipe(gulp.dest('./public'));
 
@@ -70,6 +73,8 @@ gulp.task('view', function() {
 
 // Compresses assets in public folder
 gulp.task('compress', function() {
+    var uglify = require('gulp-uglify');
+
     return gulp.src('./public/js/bundle.js')
         .pipe(uglify({mangle: false}))
         .pipe(gulp.dest('public/js'));
