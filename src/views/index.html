@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="app" ng-controller="DemoController">
 <head lang="en">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-    <div>
-        <div class="container">
-            <h1>{{title | demoFilter}}</h1>
-            <demo-view></demo-view>
-            <button class="btn btn-primary" ng-click="changeLanguage('en')" translate="BUTTON_EN"></button>
-            <button class="btn btn-primary" ng-click="changeLanguage('de')" translate="BUTTON_DE"></button>
-        </div>
+    <div class="container">
+        <h1>{{title | demoFilter}}</h1>
+        <demo-view></demo-view>
+        <button class="btn btn-primary" ng-click="changeLanguage('en')" translate="BUTTON_EN"></button>
+        <button class="btn btn-primary" ng-click="changeLanguage('de')" translate="BUTTON_DE"></button>
     </div>
     <script src="js/bundle.js"></script>
     <script src="js/templates.js"></script>

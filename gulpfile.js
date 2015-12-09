@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 
-gulp.task('default', function() {
+gulp.task('hello', function() {
 
 });
 
@@ -15,10 +15,13 @@ gulp.task('make', function() {
 // JSHint task
 gulp.task('lint', function() {
     var jshint = require('gulp-jshint');
+    var notify = require("gulp-notify");
 
     gulp.src(['./src/js/main.js', './src/js/**/*.js'])
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'))
+        .on('error', notify.onError({ message: 'JS hint fail'}));
 });
 
 // Browserify task
