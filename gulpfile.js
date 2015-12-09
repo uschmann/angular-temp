@@ -21,7 +21,7 @@ gulp.task('lint', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('fail'))
-        .on('error', notify.onError({ message: 'JS hint fail'}));
+        .on('error', notify.onError({ title: 'JS hint', message: 'JS hint fail'}));
 });
 
 // Browserify task
@@ -43,14 +43,17 @@ gulp.task('browserify', function() {
 gulp.task('sass', function() {
     var sass = require('gulp-sass');
     var autoprefixer = require('gulp-autoprefixer');
+    var notify = require("gulp-notify");
 
     gulp.src('src/scss/style.scss')
         // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
-        .pipe(sass({onError: function(e) { console.log(e); } }))
-        // Optionally add autoprefixer
+        .pipe(sass().on('error', function (err) {
+            console.log(err);
+        }))
+        .on('error', notify.onError({ title: 'SASS', message: 'SASS fail'}))
         .pipe(autoprefixer("last 2 versions", "> 1%", "ie 8"))
-        // These last two should look familiar now :)
-        .pipe(gulp.dest('public/css/'));
+        .pipe(gulp.dest('public/css/'))
+
 });
 
 // Package and copy views

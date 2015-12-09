@@ -1,12 +1,47 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-$background-color: #a12345;
+@import "mixins/z";
+@import "themes/light";
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-  background-color: $background-color;
+$z-layers: (
+        'header':   100,
+        'side-bar': 50
+);
+
+html, body, .wrapper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: $headerHeight;
+  background-color: $headerBackgroundColor;
+  overflow: auto;
+  z-index: z('header');
+}
 
+.side-nav {
+  height:100%;
+  width: $sideNavWidth;
+  background-color: $sideNavBackGroundColor;
+  padding: $headerHeight 0 0 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: z('side-bar');
+}
 
+.content {
+  position: absolute;
+  top: $headerHeight;
+  left: $sideNavWidth;
+  right: 0px;
+  bottom: 0px;
+  background-color: #ccc;
+  overflow: scroll;
+  .row {
+    margin: 0;
+  }
+}
