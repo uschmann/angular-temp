@@ -33,6 +33,8 @@ gulp.task('browserify', function() {
         .pipe(browserify({
             insertGlobals: true,
             debug: true
+        }).on('error', function (err) {
+            console.log(err);
         }))
         // Bundle to a single file
         .pipe(concat('bundle.js'))

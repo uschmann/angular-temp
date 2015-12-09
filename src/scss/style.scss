@@ -1,4 +1,4 @@
-@import "mixins/z";
+@import "mixins/index";
 @import "themes/light";
 
 $z-layers: (
@@ -10,6 +10,33 @@ html, body, .wrapper {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  color: $color-text-primary;
+  background-color: $color-background-body;
+  font-size: $font-size-base;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
 }
 
 .header {
@@ -39,9 +66,5 @@ html, body, .wrapper {
   left: $sideNavWidth;
   right: 0px;
   bottom: 0px;
-  background-color: #ccc;
   overflow: scroll;
-  .row {
-    margin: 0;
-  }
 }

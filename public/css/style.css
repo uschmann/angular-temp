@@ -1,13 +1,37 @@
 /**
- * header
+ * colors
  */
 /**
- * side-nav
+ * dimensions
+ */
+/**
+ * Components
  */
 html, body, .wrapper {
   height: 100%;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  color: #000;
+  background-color: #fff;
+  font-size: 14px; }
+
+h1 {
+  font-size: 36px; }
+
+h2 {
+  font-size: 30px; }
+
+h3 {
+  font-size: 24px; }
+
+h4 {
+  font-size: 18px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  font-size: 12px; }
 
 .header {
   position: fixed;
@@ -34,7 +58,4 @@ html, body, .wrapper {
   left: 75px;
   right: 0px;
   bottom: 0px;
-  background-color: #ccc;
   overflow: scroll; }
-  .content .row {
-    margin: 0; }
