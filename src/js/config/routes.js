@@ -11,6 +11,17 @@ module.exports = function ($stateProvider, $urlRouterProvider) {
         })
         .state('todos', {
             url: '/todos',
+            resolve: {
+                todos: function(todoService) {
+                    console.log('resolve');
+                    return todoService.loadAllTodos();
+                }
+            },
+            controller: function($scope, todos) {
+                $scope.todos = todos;
+                console.log(todos);
+                console.log('controller instanciated');
+            },
             templateUrl: 'partials/todos/todos.html'
         })
         .state('todos.create', {
