@@ -100,7 +100,7 @@ gulp.task('pre-commit', function () {
     var jshint = require('gulp-jshint');
     var notify = require("gulp-notify");
 
-    return gulp.src(guppy.src('pre-commit'))
+    return gulp.src(['./src/js/main.js', './src/js/**/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(jshint.reporter('fail'));

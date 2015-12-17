@@ -6,7 +6,5 @@ module.exports = function DemoController($scope, demoService, $translate) {
     $scope.changeLanguage = function changeLanguage(languageKey) {
         $translate.use(languageKey);
         $scope.title = demoService.getHeadline();
-
-        var foo = 'bar';
     };
 };
