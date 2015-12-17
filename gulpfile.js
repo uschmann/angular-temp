@@ -94,3 +94,14 @@ gulp.task('watch', function () {
     gulp.watch(['./src/scss/**/*.scss'], ['sass']);
     gulp.watch(['./src/views/index.html', './src/views/**/*.html'], ['view']);
 });
+
+gulp.task('pre-commit', function () {
+    var guppy = require('git-guppy')(gulp);
+    var jshint = require('gulp-jshint');
+    var notify = require("gulp-notify");
+
+    return gulp.src(guppy.src('pre-commit'))
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
